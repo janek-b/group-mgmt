@@ -3,7 +3,7 @@
 //
 // FlexBox helper classes
 //
-.flex-grid-column {
+.fg-column {
   display: flex;
   flex-direction: column;
 }
@@ -13,10 +13,23 @@
   flex-direction: row;
 }
 
-.fg-just-center {
+.fg-center-center {
   justify-content: center;
-  align-items: center;
+
   align-content: center;
+}
+
+.fg-between {
+  justify-content: space-between;
+  align-items: center;
+}
+.fg-around {
+  justify-content: space-around;
+  align-items: center;
+}
+
+.fg-stretch {
+  align-items: stretch;
 }
 
 

@@ -1,3 +1,10 @@
 mdl-layout-title {
   cursor: pointer;
 }
+
+.mdl-dialog__actions  {
+  padding-right: 24px;
+  hr {
+    margin-right: 0px;
+  }
+}
