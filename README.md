@@ -1,28 +1,105 @@
-# HobbyHorse
+# _Hobby Horse_
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.1.
+#### _A Hobby Horse enthusiast club management system, 05-12-2017_
 
-## Development server
+####  By _**Janek Brandt**_
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Description
 
-## Code scaffolding
+This project is a web application that allows members of a club to connect with each other and share information about upcoming events.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
 
-## Build
+## Planning
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+#### Configuration/Dependencies
+  * ##### _Setup/Installation_
+    * This application uses firebase for it's database.
+    * Set up a new project in firebase and click on _**Add Firebase to your web app**_ to get your firebase config.
+    * Create a new file `src/app/api-keys.ts` and place your firebase config into it. The file should look like this.
+    ```
+    export var masterFirebaseConfig = {
+        apiKey: "xxxx",
+        authDomain: "xxxx.firebaseapp.com",
+        databaseURL: "https://xxxx.firebaseio.com",
+        storageBucket: "xxxx.appspot.com",
+        messagingSenderId: "xxxx"
+      };
+    ```
+    * In the firebase console click on the _**Database**_ section and then on the _**RULES**_ tab. Set the rules to the following and then click _**Publish**_.
+    ```
+      {
+        "rules": {
+          ".read": true,
+          ".write": true
+        }
+      }
+    ```
+    * From the project root folder run the following commands to install the project dependencies and run app.
 
-## Running unit tests
+    `npm install`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    `ng serve`
 
-## Running end-to-end tests
+    * Navigate to `http://localhost:4200/`
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+  * ##### _Packages Dependencies_
+    * `angularfire2`
+    * `firebase`
+    * `@angular-mdl/core`
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+#### Specs
+  * A user is able to:
+    * view all members.
+    * view all members with a specific role/rank.
+    * view details of an individual member.
+    * create an account to become a member.
+    * edit their profile information.
+    * delete their account.
+    * view a list of events.
+    * view details of an event.
+  * A user with a role of Admin is able to:
+    * add a new member.
+    * edit a members profile.
+    * delete a members account.
+    * add a new event.
+    * edit an events details.
+    * delete an event.
+
+
+#### Integration
+  * Component for welcome page.
+  * Component for about page.
+  * Component for edit member form.
+  * Component for member list.
+  * Component for member details.
+  * Pipe to filter member list by their role/rank.
+
+
+#### UX/UI
+  * Use [Material Design Lite](https://getmdl.io/index.html) with the angular package [angular2-mdl](https://github.com/mseemann/angular2-mdl) to implement material design.
+
+
+
+#### Polish
+  * Make site responsive on desktop and mobile.
+  * Implement Message Board.
+
+
+#### To Do
+
+- [x] Add README
+- [x] Install and import dependencies
+- [x] Create router and add navbar to app component
+- [ ] Add Welcome page
+- [ ] Add About page
+- [ ] Define user roles
+- [ ] Implement user creation on first sign in
+- [ ] Implement user creation by admin
+- [ ] Member-list component
+- [ ] Member-detail component
+- [ ] Member-edit component
+- [ ] Event-list component
+- [ ] Event-detail component
+- [ ] Event-new component
