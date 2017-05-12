@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+
+//
+// FlexBox helper classes
+//
+.flex-grid-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.fg-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.fg-just-center {
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+
+
+//
+//

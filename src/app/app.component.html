@@ -1,49 +1,35 @@
-<div class="demo-container" mdl-shadow="2">
+<div class="demo-container">
   <mdl-layout #mdlLayout1="mdlLayout" mdl-layout-fixed-header mdl-layout-header-seamed>
     <mdl-layout-header>
-      <mdl-layout-header-row>
+      <mdl-layout-header-row mdl-shadow="4">
         <mdl-layout-title routerLink="">Hobby Horse</mdl-layout-title>
         <mdl-layout-spacer></mdl-layout-spacer>
-        <!-- Navigation. We hide it in small screens. -->
         <nav class="mdl-navigation mdl-layout--large-screen-only">
           <a class="mdl-navigation__link" routerLink="about">About</a>
-          <a class="mdl-navigation__link" >Link</a>
-          <a class="mdl-navigation__link" >Link</a>
         </nav>
       </mdl-layout-header-row>
     </mdl-layout-header>
     <mdl-layout-drawer>
-      <mdl-layout-title>Title</mdl-layout-title>
+      <mdl-layout-title routerLink="" (click)="mdlLayout1.closeDrawer()">Hobby Horse</mdl-layout-title>
       <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" routerLink="" (click)="mdlLayout1.closeDrawer()">Home</a>
         <a class="mdl-navigation__link" routerLink="about" (click)="mdlLayout1.closeDrawer()">About</a>
-        <a class="mdl-navigation__link" (click)="mdlLayout1.closeDrawer()">Link</a>
       </nav>
     </mdl-layout-drawer>
     <mdl-layout-content class="flex-grid-column">
-      
       <router-outlet></router-outlet>
-
       <mdl-layout-spacer></mdl-layout-spacer>
-
       <footer class="mdl-mini-footer">
         <div class="mdl-mini-footer__left-section">
           <div class="mdl-logo">
-            More Information
+            The unofficial Hobby Horsing Community Site
           </div>
-          <ul class="mdl-mini-footer__link-list">
-            <li><a href="#">Help</a></li>
-            <li><a href="#">Privacy and Terms</a></li>
-            <li><a href="#">User Agreement</a></li>
-          </ul>
         </div>
         <div class="mdl-mini-footer__right-section">
-          <button class="mdl-mini-footer__social-btn"></button>
-          <button class="mdl-mini-footer__social-btn"></button>
-          <button class="mdl-mini-footer__social-btn"></button>
+          <ul class="mdl-mini-footer__link-list">
+            <li><a routerLink="about">About</a></li>
+          </ul>
         </div>
       </footer>
-
     </mdl-layout-content>
  </mdl-layout>
 </div>
