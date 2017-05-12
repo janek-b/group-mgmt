@@ -10,6 +10,22 @@ export class AuthService {
 
   constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase) {
     this.user = afAuth.authState;
+    this.user.subscribe(user => {
+      if (user) {
+        var ref = firebase.database().ref('/users');
+        ref.once('value', (snapshot) => {
+          if (!snapshot.hasChild(user.uid)) {
+            var newUser = {
+              displayName: user.displayName,
+              email: user.email,
+              photoURL: user.photoURL
+            }
+            ref.child(user.uid).set(newUser);
+          }
+        });
+      }
+    });
+
   }
 
 

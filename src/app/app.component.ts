@@ -14,7 +14,10 @@ export class AppComponent implements OnInit {
   constructor(private authService: AuthService, private fb: FormBuilder) {}
 
   ngOnInit() {
-    this.authService.getCurrentUser().subscribe(currentUser => this.user = currentUser);
+    this.authService.getCurrentUser().subscribe(currentUser => {
+      this.user = currentUser;
+      console.log(this.user);
+    });
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(32)]]
