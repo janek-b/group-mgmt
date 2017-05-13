@@ -1,14 +1,20 @@
-mdl-layout-title {
-  cursor: pointer;
+.page-layout {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
-.mdl-dialog__actions  {
-  padding-right: 24px;
+main {
+  flex: 1 0 auto;
+}
+
+#loginModal {
+  width: 400px;
+  height: 500px;
   hr {
-    margin-right: 0px;
+    width: 100%;
   }
-}
-
-.user-chip {
-  margin-right: 10px;
+  .modal-footer {
+    padding: 30px;
+  }
 }

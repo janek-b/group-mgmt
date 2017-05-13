@@ -1,48 +1,45 @@
-<div class="fg-row fg-around">
-  <div class="fc-auto fc-start filter-section">
-    <mdl-card mdl-shadow="2">
-      <mdl-card-title>
-        <h2 mdl-card-title-text>Filter Members</h2>
-      </mdl-card-title>
-      <mdl-card-menu>
-        <button mdl-button mdl-button-type="icon" mdl-ripple>
-          <mdl-icon>share</mdl-icon>
-        </button>
-      </mdl-card-menu>
-    </mdl-card>
-  </div>
-  <div class="fc-expand list-section">
-    <div class="fg-column">
-      <div class="fg-row fg-around">
-        <h5>Members: {{members?.length}}</h5>
-        <h5>stat2</h5>
-        <h5>stat3</h5>
+<div class="row">
+  <div class="col s12 m3">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">Filter Members</span>
+        <p>I am a very simple card. I am good at containing small bits of information.
+        I am convenient because I require little markup to use effectively.</p>
       </div>
-      <hr>
-      <!-- card for list -->
-      <mdl-list>
-        <mdl-list-item lines="2" *ngFor="let member of members">
-          <mdl-list-item-primary-content>
-            <div class="fg-row">
-              <div class="avatar-img">
-                <img (click)="goToDetail(member)" *ngIf="member.photoURL" class="avatar-img" src="{{member.photoURL}}">
-                <mdl-icon (click)="goToDetail(member)" *ngIf="!member.photoURL" mdl-list-item-avatar>person</mdl-icon>
-              </div>
-              <div class="fc-auto">
-                <span>{{member?.displayName || member?.email}}</span>
-                <mdl-list-item-sub-title>
-                  <span class="text-left">Role: {{member?.role}}</span>
-                </mdl-list-item-sub-title>
-              </div>
-            </div>
-          </mdl-list-item-primary-content>
-          <mdl-list-item-secondary-content>
-            <mdl-list-item-secondary-info>
-              <span class="text-right">Member since: {{member?.joined | date}}</span>
-            </mdl-list-item-secondary-info>
-          </mdl-list-item-secondary-content>
-        </mdl-list-item>
-      </mdl-list>
+      <div class="card-action">
+        <a href="#">This is a link</a>
+      </div>
     </div>
+  </div>
+  <div class="col s12 m9">
+    <div class="fg-row fg-around">
+      <h5>Members: {{members?.length}}</h5>
+      <h5>stat2</h5>
+      <h5>stat3</h5>
+    </div>
+    <hr>
+
+    <ul class="collection" *ngFor="let member of members">
+      <li class="collection-item avatar">
+        <img (click)="goToDetail(member)" src="{{member.photoURL}}" alt="" class="circle">
+        <span class="title">{{member.displayName || member.email}}</span>
+        <div class="fg-row grey-text">
+          <div class="fc-auto">
+            <p class="text-right">Role</p>
+            <p class="text-right">Member Since</p>
+          </div>
+          <div class="fc-auto spacer">
+            <p> - </p>
+            <p> - </p>
+          </div>
+          <div class="fc-auto">
+            <p>{{member.role}}</p>
+            <p>{{member.joined | date}}</p>
+          </div>
+        </div>
+        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+      </li>
+    </ul>
+
   </div>
 </div>

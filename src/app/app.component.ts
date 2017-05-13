@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import { AuthService } from './auth.service';
+import {MaterializeAction} from 'angular2-materialize';
+
 
 @Component({
   selector: 'app-root',
@@ -10,6 +12,8 @@ import { AuthService } from './auth.service';
 export class AppComponent implements OnInit {
   user: any = null;
   loginForm: FormGroup;
+
+  loginModal = new EventEmitter<string|MaterializeAction>();
 
   constructor(private authService: AuthService,
               private fb: FormBuilder) {}
@@ -51,5 +55,12 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+  }
+
+  openModal() {
+    this.loginModal.emit({action:"modal",params:['open']});
+  }
+  closeModal() {
+    this.loginModal.emit({action:"modal",params:['close']});
   }
 }

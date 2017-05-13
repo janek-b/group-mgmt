@@ -1,5 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 
+// SASS variables override
+
+$roboto-font-path: "../node_modules/materialize-css/fonts/roboto/";
+@import "../node_modules/materialize-css/sass/components/color";
+
+
+$primary-color: color("blue-grey", "darken-1") !default;
+$primary-color-light: lighten($primary-color, 15%) !default;
+$primary-color-dark: darken($primary-color, 15%) !default;
+
+$secondary-color: color("orange", "darken-2") !default;
+$success-color: color("green", "base") !default;
+$error-color: color("red", "base") !default;
+$link-color: color("light-blue", "darken-1") !default;
+
+
+@import '../node_modules/materialize-css/sass/materialize';
+
+
 //
 // FlexBox helper classes
 //
@@ -16,6 +35,7 @@
 .fg-center-center {
   justify-content: center;
   align-content: center;
+  align-items: center;
 }
 
 .fg-between {
@@ -44,23 +64,18 @@
 }
 
 
+.spacer {
+  width: 40px;
+  text-align: center;
+}
+
 //
 //
 
 
-.left {
-  float: left;
-}
-
-.right {
-  float: right;
-}
-
-
-.text-left {
-  text-align: left;
-}
-
-.text-right {
-  text-align: right;
+.loading-screen {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 }

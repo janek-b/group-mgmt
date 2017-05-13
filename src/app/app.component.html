@@ -1,71 +1,86 @@
-<div class="demo-container">
-  <mdl-layout #mdlNavBar="mdlLayout" mdl-layout-fixed-header mdl-layout-header-seamed>
-    <mdl-layout-header>
-      <mdl-layout-header-row mdl-shadow="4">
-        <mdl-layout-title routerLink="">Group Mgmt</mdl-layout-title>
-        <mdl-layout-spacer></mdl-layout-spacer>
-        <mdl-chip class="user-chip" *ngIf="user" mdl-label="{{user?.displayName || user?.email}}">
-          <img *ngIf="user?.photoURL" mdl-chip-contact src="{{user?.photoURL}}">
-        </mdl-chip>
-        <button *ngIf="!user" #editUserButton mdl-button mdl-button-type="raised" mdl-colored="accent" mdl-ripple (click)="editUserDialog.show()">Login</button>
-        <button *ngIf="user" mdl-button mdl-button-type="raised" mdl-colored="primary" (click)="logout()" mdl-ripple>Logout</button>
+<div class="page-layout">
+  <header>
+    <nav>
+      <div class="nav-wrapper">
+        <a materialize="sideNav"  [materializeParams]="[{closeOnClick: true}]" href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+        <a href="#" class="brand-logo">Group Mgmt</a>
+        <ul class="right hide-on-med-and-down">
+          <li>
+            <div *ngIf="user" class="chip">
+              <img *ngIf="user.photoURL" src="{{user.photoURL}}" alt="profile picture of {{user.displayName || user.email}}">
+              {{user.displayName || user.email}}
+            </div>
+          </li>
+          <li><a *ngIf="!user" class="waves-effect waves-light btn" (click)="openModal()">Login <i class="material-icons right">cloud</i></a></li>
+          <li><a *ngIf="user" class="waves-effect waves-light btn" (click)="logout()">Logout <i class="material-icons right">cloud</i></a></li>
+        </ul>
+        <ul id="slide-out" class="side-nav">
+          <li class="center-align">
+            <a routerLink="">
+              <h5>Group Mgmt</h5>
+            </a>
+          </li>
+          <li *ngIf="user">
+            <div class="userView">
+              <a routerLink="/members/{{user.uid}}"><img class="circle" src="{{user.photoURL}}"></a>
+              <a routerLink="/members/{{user.uid}}"><span class="black-text name">{{user.displayName}}</span></a>
+              <a routerLink="/members/{{user.uid}}"><span class="black-text email">{{user.email}}</span></a>
+            </div>
+          </li>
+          <li><div class="divider"></div></li>
+          <li><a class="subheader">Links</a></li>
+          <li><a routerLink="about">About</a></li>
+          <li><a routerLink="members">Members</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
-      </mdl-layout-header-row>
-    </mdl-layout-header>
-    <mdl-layout-drawer>
-      <mdl-layout-title routerLink="" (click)="mdlNavBar.closeDrawer()">Group Mgmt</mdl-layout-title>
-      <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" routerLink="about" (click)="mdlNavBar.closeDrawer()">About</a>
-        <a class="mdl-navigation__link" routerLink="members" (click)="mdlNavBar.closeDrawer()">Members</a>
-      </nav>
-    </mdl-layout-drawer>
-    <mdl-layout-content class="fg-column">
-      <router-outlet></router-outlet>
-      <mdl-layout-spacer></mdl-layout-spacer>
-      <footer class="mdl-mini-footer">
-        <div class="mdl-mini-footer__left-section">
-          <div class="mdl-logo">
-            An Enthusiast Club Community Site
-          </div>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <p class="grey-text text-lighten-4">An Enthusiast Club Community Site</p>
         </div>
-        <div class="mdl-mini-footer__right-section">
-          <ul class="mdl-mini-footer__link-list">
-            <li><a routerLink="about">About</a></li>
-          </ul>
+        <div class="col l4 offset-l2 s12">
+          <p><a class="grey-text text-lighten-4 right" routerLink="about">About</a></p>
         </div>
-      </footer>
-    </mdl-layout-content>
- </mdl-layout>
+      </div>
+    </div>
+  </footer>
 </div>
 
-
-
-<mdl-dialog #editUserDialog
-            [mdl-dialog-config]="{
-              clickOutsideToClose: true,
-              styles:{'width': '300px'},
-              isModal:true,
-              openFrom: editUserButton,
-              enterTransitionDuration: 400,
-              leaveTransitionDuration: 400}">
-  <h3 class="mdl-dialog__title">Login</h3>
-  <div class="mdl-dialog__content">
+<div id="loginModal" class="modal" materialize="modal" [materializeParams]="[{dismissible: true}]" [materializeActions]="loginModal">
+  <div class="modal-content">
+    <h4>Login</h4>
     <form [formGroup]="loginForm">
-      <mdl-textfield formControlName="email" type="email" label="Email" floating-label></mdl-textfield>
-      <mdl-textfield formControlName="password" type="password" label="Password" floating-label></mdl-textfield>
+      <div class="input-field col s6">
+        <input formControlName="email" id="email" type="email" class="validate">
+        <label for="email">Email</label>
+      </div>
+      <div class="input-field col s6">
+        <input formControlName="password" id="password" type="password" class="validate">
+        <label for="password">Password</label>
+      </div>
     </form>
   </div>
-  <div class="mdl-dialog__actions fg-column">
-    <div class="fg-row fg-between">
-      <button mdl-button (click)="editUserDialog.close()" mdl-ripple>Cancel</button>
-      <button mdl-button [disabled]="!loginForm.valid" (click)="loginEmailPass(); editUserDialog.close();" mdl-button-type="raised" mdl-colored="primary" mdl-ripple>Login</button>
-    </div>
-    <hr>
-    <button mdl-button [disabled]="!loginForm.valid" mdl-button-type="raised" mdl-colored="primary" (click)="createAccount(); editUserDialog.close();" mdl-ripple>Create Account</button>
-    <br>
-    <button class="fg-row fg-around" mdl-button mdl-button-type="raised" mdl-colored="accent" (click)="loginGoogle(); editUserDialog.close();" mdl-ripple>
-        <i class="fa fa-lg fa-google" aria-hidden="true"></i>
+  <div class="modal-footer">
+    <div class=" fg-column">
+      <div class="fg-row fg-between">
+        <button class="modal-action modal-close waves-effect waves-lift btn-flat" (click)="editUserDialog.close()">Cancel</button>
+        <button class="modal-action modal-close waves-effect waves-lift btn" [disabled]="!loginForm.valid" (click)="loginEmailPass()">Login</button>
+      </div>
+      <hr>
+      <button class="modal-action modal-close waves-effect waves-lift btn" [disabled]="!loginForm.valid" (click)="createAccount()">Create Account</button>
+      <br>
+      <button class="modal-action modal-close waves-effect waves-lift btn light-blue darken-1" (click)="loginGoogle()">
+        <i class="fa fa-lg fa-google left" aria-hidden="true"></i>
         <span>Login With Google</span>
-    </button>
+      </button>
+    </div>
   </div>
-</mdl-dialog>
+</div>
