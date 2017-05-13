@@ -16,4 +16,8 @@ export class DbService {
     return this.users;
   }
 
+  getMember(memberId: string) {
+    return this.db.object('/users/'+memberId);
+  }
+
 }

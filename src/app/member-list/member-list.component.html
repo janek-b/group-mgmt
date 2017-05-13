@@ -1,5 +1,5 @@
 <div class="fg-row fg-around">
-  <div class="fc-auto">
+  <div class="fc-auto fc-start filter-section">
     <mdl-card mdl-shadow="2">
       <mdl-card-title>
         <h2 mdl-card-title-text>Filter Members</h2>
@@ -11,7 +11,7 @@
       </mdl-card-menu>
     </mdl-card>
   </div>
-  <div class="fc-expand">
+  <div class="fc-expand list-section">
     <div class="fg-column">
       <div class="fg-row fg-around">
         <h5>Members: {{members?.length}}</h5>
@@ -25,16 +25,22 @@
           <mdl-list-item-primary-content>
             <div class="fg-row">
               <div class="avatar-img">
-                <img *ngIf="member.photoURL" class="avatar-img" src="{{member.photoURL}}">
-                <mdl-icon *ngIf="!member.photoURL" mdl-list-item-avatar>person</mdl-icon>
+                <img (click)="goToDetail(member)" *ngIf="member.photoURL" class="avatar-img" src="{{member.photoURL}}">
+                <mdl-icon (click)="goToDetail(member)" *ngIf="!member.photoURL" mdl-list-item-avatar>person</mdl-icon>
               </div>
-              <div class="">
+              <div class="fc-auto">
                 <span>{{member?.displayName || member?.email}}</span>
-                <mdl-list-item-sub-title>Member since: {{member?.joined | date}}</mdl-list-item-sub-title>
+                <mdl-list-item-sub-title>
+                  <span class="text-left">Role: {{member?.role}}</span>
+                </mdl-list-item-sub-title>
               </div>
             </div>
           </mdl-list-item-primary-content>
-          <a href="#"><mdl-icon>star</mdl-icon></a>
+          <mdl-list-item-secondary-content>
+            <mdl-list-item-secondary-info>
+              <span class="text-right">Member since: {{member?.joined | date}}</span>
+            </mdl-list-item-secondary-info>
+          </mdl-list-item-secondary-content>
         </mdl-list-item>
       </mdl-list>
     </div>

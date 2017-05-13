@@ -39,6 +39,10 @@
   flex: 0 1 auto;
 }
 
+.fc-start {
+  align-self: flex-start;
+}
+
 
 //
 //
@@ -50,4 +54,13 @@
 
 .right {
   float: right;
+}
+
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
 }
