@@ -20,4 +20,8 @@ export class DbService {
     return this.db.object('/users/'+memberId);
   }
 
+  updateMember(memberId: string, updateValues: any) {
+    this.users.update(memberId, updateValues);
+  }
+
 }

@@ -46,4 +46,8 @@ export class AuthService {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
   }
 
+  updateUserProfile(displayName: string, photoURL: string) {
+    return this.afAuth.auth.currentUser.updateProfile({displayName: displayName, photoURL: photoURL});
+  }
+
 }

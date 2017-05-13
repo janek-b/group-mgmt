@@ -1,52 +1,6 @@
-<!-- <div class="fg-row fg-center-center">
-  <mdl-card *ngIf="member" mdl-shadow="2" class="detail-card">
-    <mdl-card-title>
-      <h2 *ngIf="user?.uid === member?.$key" mdl-card-title-text>{{member?.displayName || 'Update your profile to add a name'}}</h2>
-      <h2 *ngIf="user?.uid !== member?.$key" mdl-card-title-text>{{member?.displayName || 'No profile name available'}}</h2>
-    </mdl-card-title>
-    <mdl-card-supporting-text>
-      <div class="fg-row">
-        <div class="fc-auto">
-          <p class="text-right">Email</p>
-          <p class="text-right">Role</p>
-          <p class="text-right">Member Since</p>
-        </div>
-        <div class="fc-auto spacer">
-          <p> - </p>
-          <p> - </p>
-          <p> - </p>
-        </div>
-        <div class="fc-auto">
-          <p>{{member?.email}}</p>
-          <p>{{member?.role}}</p>
-          <p>{{member?.joined | date}}</p>
-        </div>
-      </div>
-    </mdl-card-supporting-text>
-    <mdl-card-actions mdl-card-border>
-      <div class="fg-row fg-center-center">
-        <div class="fc-auto">
-          <img class="profile-img" src="{{member?.photoURL}}" alt="profile image of {{member?.displayName}}">
-        </div>
-        <div class="fc-auto w6">
-          <h4>Bio</h4>
-          <p *ngIf="user?.uid === member?.$key">{{member?.bio || 'Update your profile to add a bio'}}</p>
-          <p *ngIf="user?.uid !== member?.$key">{{member?.bio || 'No bio available'}}</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-      </div>
-    </mdl-card-actions>
-    <mdl-card-menu>
-      <button *ngIf="user?.uid === member?.$key" mdl-button mdl-button-type="icon" mdl-ripple>
-        <mdl-icon>edit</mdl-icon>
-      </button>
-    </mdl-card-menu>
-  </mdl-card>
-</div> -->
-
 <div class="row">
   <div class="col s12 m10 offset-m1">
-    <div class="card horizontal detail-card">
+    <div *ngIf="member" class="card horizontal detail-card">
       <div class="card-image">
         <img src="{{member?.photoURL}}" alt="">
       </div>
@@ -85,8 +39,8 @@
         </div>
       </div>
       <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+        <span class="card-title grey-text text-darken-4">Edit Profile<i class="material-icons right">close</i></span>
+        <app-member-edit [member]="member"></app-member-edit>
       </div>
     </div>
   </div>

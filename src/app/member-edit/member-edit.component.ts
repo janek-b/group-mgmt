@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { DbService } from '../db.service';
@@ -12,6 +12,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./member-edit.component.scss']
 })
 export class MemberEditComponent implements OnInit {
+  @Input() member: any;
   editForm: FormGroup;
 
   constructor(private route: ActivatedRoute,
@@ -27,6 +28,18 @@ export class MemberEditComponent implements OnInit {
       photoURL: [''],
       bio: ['']
     })
+    this.editForm.reset({
+      displayName: this.member.displayName,
+      photoURL: this.member.photoURL,
+      bio: this.member.bio
+    })
+  }
+
+  updateMember() {
+    var {displayName, photoURL, bio} = this.editForm.value;
+    this.authService.updateUserProfile(displayName, photoURL).then(() => {
+      this.dbService.updateMember(this.member.$key, this.editForm.value);
+    });
   }
 
 }

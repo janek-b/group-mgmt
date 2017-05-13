@@ -1,3 +1,26 @@
-<p>
-  member-edit works!
-</p>
+<form materialize [formGroup]="editForm">
+  <div class="row">
+    <div class="input-field col s6">
+      <input id="displayName" type="text" formControlName="displayName">
+      <label for="displayName">Display Name</label>
+    </div>
+    <div class="input-field col s6">
+      <input id="photoURL" type="text" formControlName="photoURL">
+      <label for="photoURL">Photo URL</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <textarea id="bio" class="materialize-textarea" formControlName="bio"></textarea>
+      <label for="bio">Member Bio</label>
+    </div>
+  </div>
+  <div class="row">
+    <button type="button" [disabled]="!editForm.valid" class="btn waves-effect waves-light right card-title" (click)="updateMember()">Update Member
+      <i class="material-icons right">done</i>
+    </button>
+    <button type="button" class="modal-trigger btn waves-effect waves-light left red">Delete Member
+      <i class="material-icons left">delete</i>
+    </button>
+  </div>
+</form>
