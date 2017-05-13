@@ -7,9 +7,8 @@ import { masterFirebaseConfig } from './api-keys';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-
 import { MaterializeModule } from 'angular2-materialize';
-import { MdlModule } from '@angular-mdl/core';
+
 
 
 import { routing } from './app.routing';
@@ -45,7 +44,6 @@ export const firebaseConfig = {
     ReactiveFormsModule,
     HttpModule,
     MaterializeModule,
-    // MdlModule,
     routing,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,

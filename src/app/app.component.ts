@@ -21,7 +21,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.authService.getCurrentUser().subscribe(currentUser => {
       this.user = currentUser;
-      console.log(this.user);
     });
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
