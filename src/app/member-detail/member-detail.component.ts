@@ -15,7 +15,11 @@ export class MemberDetailComponent implements OnInit {
   member: User;
   user: any = null;
 
-  constructor(private route: ActivatedRoute, private location: Location, private router: Router, private dbService: DbService, private authService: AuthService) { }
+  constructor(private route: ActivatedRoute,
+              private location: Location,
+              private router: Router,
+              private dbService: DbService,
+              private authService: AuthService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {

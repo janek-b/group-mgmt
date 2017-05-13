@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 export class MemberListComponent implements OnInit {
   members: User[];
 
-  constructor(private dbService: DbService, private router: Router) { }
+  constructor(private dbService: DbService,
+              private router: Router) { }
 
   ngOnInit() {
     this.dbService.getUsers().subscribe(users => this.members = users);

@@ -11,7 +11,8 @@ export class AppComponent implements OnInit {
   user: any = null;
   loginForm: FormGroup;
 
-  constructor(private authService: AuthService, private fb: FormBuilder) {}
+  constructor(private authService: AuthService,
+              private fb: FormBuilder) {}
 
   ngOnInit() {
     this.authService.getCurrentUser().subscribe(currentUser => {
