@@ -1,6 +1,6 @@
-# _Hobby Horse_
+# _Group Mgmt_
 
-#### _A Hobby Horse enthusiast club management system, 05-12-2017_
+#### _An enthusiast club management system, 05-12-2017_
 
 ####  By _**Janek Brandt**_
 

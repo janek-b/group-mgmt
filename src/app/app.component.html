@@ -2,7 +2,7 @@
   <mdl-layout #mdlNavBar="mdlLayout" mdl-layout-fixed-header mdl-layout-header-seamed>
     <mdl-layout-header>
       <mdl-layout-header-row mdl-shadow="4">
-        <mdl-layout-title routerLink="">Hobby Horse</mdl-layout-title>
+        <mdl-layout-title routerLink="">Group Mgmt</mdl-layout-title>
         <mdl-layout-spacer></mdl-layout-spacer>
         <mdl-chip class="user-chip" *ngIf="user" mdl-label="{{user?.displayName || user?.email}}">
           <img *ngIf="user?.photoURL" mdl-chip-contact src="{{user?.photoURL}}">
@@ -13,7 +13,7 @@
       </mdl-layout-header-row>
     </mdl-layout-header>
     <mdl-layout-drawer>
-      <mdl-layout-title routerLink="" (click)="mdlNavBar.closeDrawer()">Hobby Horse</mdl-layout-title>
+      <mdl-layout-title routerLink="" (click)="mdlNavBar.closeDrawer()">Group Mgmt</mdl-layout-title>
       <nav class="mdl-navigation">
         <a class="mdl-navigation__link" routerLink="about" (click)="mdlNavBar.closeDrawer()">About</a>
         <a class="mdl-navigation__link" routerLink="members" (click)="mdlNavBar.closeDrawer()">Members</a>
@@ -25,7 +25,7 @@
       <footer class="mdl-mini-footer">
         <div class="mdl-mini-footer__left-section">
           <div class="mdl-logo">
-            The unofficial Hobby Horsing Community Site
+            An Enthusiast Club Community Site
           </div>
         </div>
         <div class="mdl-mini-footer__right-section">
