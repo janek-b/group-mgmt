@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
+import { User } from './user';
 
 @Injectable()
 export class AuthService {
@@ -15,11 +16,7 @@ export class AuthService {
         var ref = firebase.database().ref('/users');
         ref.once('value', (snapshot) => {
           if (!snapshot.hasChild(user.uid)) {
-            var newUser = {
-              displayName: user.displayName,
-              email: user.email,
-              photoURL: user.photoURL
-            }
+            var newUser = new User(user.displayName, user.email, user.photoURL, (new Date).toJSON());
             ref.child(user.uid).set(newUser);
           }
         });

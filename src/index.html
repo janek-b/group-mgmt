@@ -12,7 +12,11 @@
   <script src="https://use.fontawesome.com/d5d691f9c5.js"></script>
 </head>
 <body>
-  <app-root>Loading...</app-root>
+  <app-root>
+    <div class="fg-row fg-center-center">
+      <mdl-spinner [active]="true"></mdl-spinner>
+    </div>
+  </app-root>
   <dialog-outlet></dialog-outlet>
 </body>
 </html>

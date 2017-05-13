@@ -1,0 +1,42 @@
+<div class="fg-row fg-around">
+  <div class="fc-auto">
+    <mdl-card mdl-shadow="2">
+      <mdl-card-title>
+        <h2 mdl-card-title-text>Filter Members</h2>
+      </mdl-card-title>
+      <mdl-card-menu>
+        <button mdl-button mdl-button-type="icon" mdl-ripple>
+          <mdl-icon>share</mdl-icon>
+        </button>
+      </mdl-card-menu>
+    </mdl-card>
+  </div>
+  <div class="fc-expand">
+    <div class="fg-column">
+      <div class="fg-row fg-around">
+        <h5>Members: {{members?.length}}</h5>
+        <h5>stat2</h5>
+        <h5>stat3</h5>
+      </div>
+      <hr>
+      <!-- card for list -->
+      <mdl-list>
+        <mdl-list-item lines="2" *ngFor="let member of members">
+          <mdl-list-item-primary-content>
+            <div class="fg-row">
+              <div class="avatar-img">
+                <img *ngIf="member.photoURL" class="avatar-img" src="{{member.photoURL}}">
+                <mdl-icon *ngIf="!member.photoURL" mdl-list-item-avatar>person</mdl-icon>
+              </div>
+              <div class="">
+                <span>{{member?.displayName || member?.email}}</span>
+                <mdl-list-item-sub-title>Member since: {{member?.joined | date}}</mdl-list-item-sub-title>
+              </div>
+            </div>
+          </mdl-list-item-primary-content>
+          <a href="#"><mdl-icon>star</mdl-icon></a>
+        </mdl-list-item>
+      </mdl-list>
+    </div>
+  </div>
+</div>

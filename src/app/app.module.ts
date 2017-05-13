@@ -11,10 +11,12 @@ import { MdlModule } from '@angular-mdl/core';
 
 import { routing } from './app.routing';
 import { AuthService } from './auth.service';
+import { DbService } from './db.service';
 
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AboutComponent } from './about/about.component';
+import { MemberListComponent } from './member-list/member-list.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -27,7 +29,8 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     WelcomeComponent,
-    AboutComponent
+    AboutComponent,
+    MemberListComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,7 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, DbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

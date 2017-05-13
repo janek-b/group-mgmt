@@ -32,7 +32,23 @@
   align-items: stretch;
 }
 
+.fc-expand {
+  flex-grow: 2;
+}
+
+.fc-auto {
+  flex: 0 1 auto;
+}
 
 
 //
 //
+
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
