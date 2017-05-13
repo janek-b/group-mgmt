@@ -43,3 +43,51 @@
     </mdl-card-menu>
   </mdl-card>
 </div> -->
+
+<div class="row">
+  <div class="col s12 m10 offset-m1">
+    <div class="card horizontal detail-card">
+      <div class="card-image">
+        <img src="{{member?.photoURL}}" alt="">
+      </div>
+
+      <div class="card-content">
+        <span *ngIf="user?.uid === member?.$key" class="card-title grey-text text-darken-4">{{member?.displayName || 'Update your profile to add a name'}}<i class="material-icons right activator">edit</i></span>
+        <span *ngIf="user?.uid !== member?.$key" class="card-title grey-text text-darken-4">{{member?.displayName || 'No profile name available'}}</span>
+        <hr>
+        <div class="row">
+          <div class="col s12 m4">
+            <div class="info-section fg-row grey-text text-darken-2">
+              <div class="fc-auto">
+                <p class="text-right">Email</p>
+                <p class="text-right">Role</p>
+                <p class="text-right">Member Since</p>
+              </div>
+              <div class="fc-auto spacer">
+                <p> - </p>
+                <p> - </p>
+                <p> - </p>
+              </div>
+              <div class="fc-auto">
+                <p>{{member?.email}}</p>
+                <p>{{member?.role}}</p>
+                <p>{{member?.joined | date}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m8">
+            <div class="bio-section grey-text text-darken-2">
+              <p *ngIf="user?.uid === member?.$key">{{member?.bio || 'Update your profile to add a bio'}}</p>
+              <p *ngIf="user?.uid !== member?.$key">{{member?.bio || 'No bio available'}}</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+      </div>
+    </div>
+  </div>
+</div>
