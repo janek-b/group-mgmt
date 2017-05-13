@@ -1,3 +1,25 @@
 .detail-card {
   width: 80vw;
+  margin-top: 25px;
+
+  mdl-card-title,
+  mdl-card-supporting-text{
+    padding-left: 5%;
+  }
+}
+
+.spacer {
+  width: 40px;
+  text-align: center;
+}
+
+.w6 {
+  width: 60%;
+}
+
+.profile-img {
+  max-width: 60%;
+  width: auto;
+  height: auto;
+  padding: 2% 10%;
 }
