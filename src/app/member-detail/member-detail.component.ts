@@ -13,6 +13,7 @@ import { DbService } from '../db.service';
 export class MemberDetailComponent implements OnInit {
   memberId: string;
   member: User;
+  user: any = null;
 
   constructor(private route: ActivatedRoute, private location: Location, private router: Router, private dbService: DbService, private authService: AuthService) { }
 
@@ -20,6 +21,9 @@ export class MemberDetailComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.memberId = params['memberId'];
       this.dbService.getMember(this.memberId).subscribe(member => this.member = member);
+    });
+    this.authService.getCurrentUser().subscribe(currentUser => {
+      this.user = currentUser;
     });
   }
 

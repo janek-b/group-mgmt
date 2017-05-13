@@ -1,5 +1,26 @@
-<p>{{member?.displayName}}</p>
-<p>{{member?.email}}</p>
-<p>{{member?.role}}</p>
-<p>{{member?.joined}}</p>
 <p>{{member?.bio}}</p>
+<div class="fg-row fg-center-center">
+  <mdl-card mdl-shadow="2" class="detail-card">
+    <mdl-card-title>
+      <h2 mdl-card-title-text>{{member?.displayName || 'Update your profile'}}</h2>
+    </mdl-card-title>
+    <mdl-card-supporting-text>
+      <p>Email: {{member?.email}}</p>
+      <p>Role: {{member?.role}}</p>
+      <p>Member Since: {{member?.joined | date}}</p>
+    </mdl-card-supporting-text>
+    <div class="fg-row">
+      <div class="fc-auto">
+        <p>{{member?.bio}}</p>
+      </div>
+    </div>
+    <mdl-card-actions mdl-card-border>
+      <button mdl-button mdl-colored mdl-ripple>Get Started</button>
+    </mdl-card-actions>
+    <mdl-card-menu>
+      <button *ngIf="user?.uid === member?.$key" mdl-button mdl-button-type="icon" mdl-ripple>
+        <mdl-icon>edit</mdl-icon>
+      </button>
+    </mdl-card-menu>
+  </mdl-card>
+</div>
