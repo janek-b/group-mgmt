@@ -2,15 +2,44 @@
   <div class="col s12 m10 offset-m1">
     <div class="card">
       <div class="card-content">
-        <span class="card-title">{{event?.name}}</span>
-        <p>{{event?.location}}</p>
-        <p>{{event?.date}}</p>
-        <p>{{event?.description}}</p>
-        <ul>
-          <li *ngFor="let member of members">
-            {{member.email}}
-          </li>
-        </ul>
+        <span class="card-title">{{event?.name | titlecase}}</span>
+        <hr>
+        <div class="row">
+          <div class="col s12 m4">
+            <div class="info-section fg-row grey-text text-darken-2">
+              <div class="fc-auto">
+                <p class="text-right">Event Location</p>
+                <p class="text-right">Event Date</p>
+                <p class="text-right">Member Attending</p>
+              </div>
+              <div class="fc-auto spacer">
+                <p> - </p>
+                <p> - </p>
+                <p> - </p>
+              </div>
+              <div class="fc-auto">
+                <p>{{event?.location | titlecase}}</p>
+                <p>{{event?.date | date}}</p>
+                <p>{{members?.length}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m8">
+            <p>{{event?.description}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 m10 offset-m1">
+            <h6 class="grey-text text-darken-2">Members attending this Event</h6>
+            <ul *ngIf="members" class="collection">
+              <li *ngFor="let member of members" class="collection-item fg-row">
+                <a routerLink="/members/{{member.$key}}" class="title fc-30">{{member.displayName || member.email}}</a>
+                <span class="fc-30 grey-text text-darken-2"><small>Role: </small>{{member.role | titlecase}}</span>
+                <span class="fc-expand right-align grey-text text-darken-2"><small>Member since: </small>{{member.joined | date}}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
         <div *ngIf="user && event">
           <button *ngIf="event | attending:user.uid" type="button" class="btn waves-effect waves-light" (click)="unAttend(event?.$key)">cancel RSVP
             <i class="material-icons right">done</i>

@@ -19,8 +19,8 @@
     </div>
     <hr>
 
-    <ul class="collection" *ngFor="let member of members">
-      <li class="collection-item avatar">
+    <ul class="collection">
+      <li class="collection-item avatar" *ngFor="let member of members">
         <img (click)="goToDetail(member)" src="{{member.photoURL}}" alt="" class="circle">
         <span class="title">{{member.displayName || member.email}}</span>
         <div class="fg-row grey-text">
@@ -37,7 +37,6 @@
             <p>{{member.joined | date}}</p>
           </div>
         </div>
-        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
       </li>
     </ul>
 

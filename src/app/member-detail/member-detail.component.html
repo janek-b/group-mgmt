@@ -16,16 +16,19 @@
                 <p class="text-right">Email</p>
                 <p class="text-right">Role</p>
                 <p class="text-right">Member Since</p>
+                <p class="text-right">Events Attending</p>
               </div>
               <div class="fc-auto spacer">
+                <p> - </p>
                 <p> - </p>
                 <p> - </p>
                 <p> - </p>
               </div>
               <div class="fc-auto">
                 <p>{{member?.email}}</p>
-                <p>{{member?.role}}</p>
+                <p>{{member?.role | titlecase}}</p>
                 <p>{{member?.joined | date}}</p>
+                <p *ngIf="events">{{(events | eventDate:'upcoming').length}}</p>
               </div>
             </div>
           </div>
@@ -40,9 +43,9 @@
         <hr>
         <div class="row">
           <div class="col s12 m12">
-            <h6>Attending upcoming events</h6>
-            <ul class="collection">
-              <li class="collection-item fg-row fg-between" *ngFor="let event of events">
+            <h6>Upcoming events</h6>
+            <ul *ngIf="events" class="collection">
+              <li class="collection-item fg-row fg-between" *ngFor="let event of events | eventDate:'upcoming'">
                 <div class="fc-expand fg-row grey-text text-darken-2">
                   <a class="fc-30" routerLink="/events/{{event.$key}}">{{event.name | titlecase}}</a>
                   <span class="fc-30"><small>location:</small> {{event.location | titlecase}}</span>
