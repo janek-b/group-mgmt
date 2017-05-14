@@ -1,17 +1,21 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { DbService } from '../db.service';
 import { User } from '../user';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import 'rxjs/add/operator/takeUntil';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-member-edit',
   templateUrl: './member-edit.component.html',
   styleUrls: ['./member-edit.component.scss']
 })
-export class MemberEditComponent implements OnInit {
+export class MemberEditComponent implements OnInit, OnDestroy {
+  private ngUnsubscribe: Subject<void> = new Subject<void>();
+  
   @Input() member: any;
   editForm: FormGroup;
 
@@ -33,6 +37,11 @@ export class MemberEditComponent implements OnInit {
       photoURL: this.member.photoURL,
       bio: this.member.bio
     })
+  }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   updateMember() {

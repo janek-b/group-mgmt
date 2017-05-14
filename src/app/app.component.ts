@@ -1,16 +1,20 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import { AuthService } from './auth.service';
 import { MaterializeAction } from 'angular2-materialize';
 import { Router, NavigationEnd } from '@angular/router';
 import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/takeUntil';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
+  private ngUnsubscribe: Subject<void> = new Subject<void>();
+
   user: any = null;
   loginForm: FormGroup;
   currentPage: string[];
@@ -22,9 +26,8 @@ export class AppComponent implements OnInit {
               private router: Router) {}
 
   ngOnInit() {
-    this.authService.getCurrentUser().subscribe(currentUser => {
-      this.user = currentUser;
-    });
+    this.authService.getCurrentUser()
+      .takeUntil(this.ngUnsubscribe).subscribe(currentUser => this.user = currentUser);
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(32)]]
@@ -32,6 +35,11 @@ export class AppComponent implements OnInit {
     this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
       this.currentPage = event['url'].split('/').filter(route => (route));
     })
+  }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   loginEmailPass() {

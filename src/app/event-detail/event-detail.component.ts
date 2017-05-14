@@ -1,17 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { DbService } from '../db.service';
 import { AuthService } from '../auth.service';
 import { Event } from '../event';
 import { User } from '../user';
+import 'rxjs/add/operator/takeUntil';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-event-detail',
   templateUrl: './event-detail.component.html',
   styleUrls: ['./event-detail.component.scss']
 })
-export class EventDetailComponent implements OnInit {
+export class EventDetailComponent implements OnInit, OnDestroy {
+  private ngUnsubscribe: Subject<void> = new Subject<void>();
+
   eventId: string;
   event: Event;
   members: User[];
@@ -25,12 +29,18 @@ export class EventDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.eventId = params['eventId'];
-      this.dbService.getEvent(this.eventId).subscribe(event => this.event = event);
-      this.dbService.getMembersByEvent(this.eventId).subscribe(members => this.members = members);
+      this.dbService.getEvent(this.eventId)
+        .takeUntil(this.ngUnsubscribe).subscribe(event => this.event = event);
+      this.dbService.getMembersByEvent(this.eventId)
+        .takeUntil(this.ngUnsubscribe).subscribe(members => this.members = members);
     });
-    this.authService.getCurrentUser().subscribe(currentUser => {
-      this.user = currentUser;
-    });
+    this.authService.getCurrentUser()
+      .takeUntil(this.ngUnsubscribe).subscribe(currentUser => this.user = currentUser);
+  }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   attend(eventId: string) {
