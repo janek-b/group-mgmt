@@ -26,6 +26,7 @@ import { EventNewComponent } from './event-new/event-new.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { AttendingPipe } from './attending.pipe';
+import { EventDatePipe } from './event-date.pipe';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -46,7 +47,8 @@ export const firebaseConfig = {
     EventNewComponent,
     EventListComponent,
     EventDetailComponent,
-    AttendingPipe
+    AttendingPipe,
+    EventDatePipe
   ],
   imports: [
     BrowserModule,

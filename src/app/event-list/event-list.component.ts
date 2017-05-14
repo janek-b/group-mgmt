@@ -14,6 +14,7 @@ export class EventListComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
 
   events: Event[];
+  eventFilter: string = 'all';
 
   constructor(private dbService: DbService,
               private router: Router) { }

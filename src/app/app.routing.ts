@@ -30,12 +30,12 @@ const appRoutes: Routes = [
     component: EventListComponent
   },
   {
-    path: 'events/:eventId',
-    component: EventDetailComponent
-  },
-  {
     path: 'events/new',
     component: EventNewComponent
+  },
+  {
+    path: 'events/:eventId',
+    component: EventDetailComponent
   }
 
 ];
