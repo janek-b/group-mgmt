@@ -34,6 +34,7 @@ This project is a web application that allows members of a club to connect with 
         }
       }
     ```
+    * In the firebase console click on the _**Authentication**_ section and then on the _**SIGN-IN METHOD**_ tab. Enable the providers _**Email/Password**_ and _**Google**_.
     * From the project root folder run the following commands to install the project dependencies and run app.
 
     `npm install`
@@ -45,7 +46,8 @@ This project is a web application that allows members of a club to connect with 
   * ##### _Packages Dependencies_
     * `angularfire2`
     * `firebase`
-    * `@angular-mdl/core`
+    * `angular2-materialize`
+    * `materialize-css`
 
 
 
@@ -78,7 +80,7 @@ This project is a web application that allows members of a club to connect with 
 
 
 #### UX/UI
-  * Use [Material Design Lite](https://getmdl.io/index.html) with the angular package [angular2-mdl](https://github.com/mseemann/angular2-mdl) to implement material design.
+  * Use [Materialize](http://materializecss.com/) with the angular package [angular2-materialize](https://www.npmjs.com/package/angular2-materialize) to implement material design.
 
 
 
@@ -92,14 +94,14 @@ This project is a web application that allows members of a club to connect with 
 - [x] Add README
 - [x] Install and import dependencies
 - [x] Create router and add navbar to app component
-- [ ] Add Welcome page
-- [ ] Add About page
+- [x] Add Welcome page
+- [x] Add About page
 - [ ] Define user roles
-- [ ] Implement user creation on first sign in
+- [x] Implement user creation on first sign in
 - [ ] Implement user creation by admin
-- [ ] Member-list component
-- [ ] Member-detail component
-- [ ] Member-edit component
+- [x] Member-list component
+- [x] Member-detail component
+- [x] Member-edit component
 - [ ] Event-list component
 - [ ] Event-detail component
 - [ ] Event-new component

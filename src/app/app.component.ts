@@ -2,8 +2,7 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import { AuthService } from './auth.service';
 import { MaterializeAction } from 'angular2-materialize';
-import { ActivatedRoute, Params, Router, NavigationEnd } from '@angular/router';
-import { Location } from '@angular/common';
+import { Router, NavigationEnd } from '@angular/router';
 import 'rxjs/add/operator/filter';
 
 @Component({
@@ -20,7 +19,6 @@ export class AppComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private fb: FormBuilder,
-              private location: Location,
               private router: Router) {}
 
   ngOnInit() {
@@ -31,10 +29,6 @@ export class AppComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(32)]]
     })
-    // this.location.subscribe(location => {
-    //   console.log(location)
-    // })
-    // console.log(this.location.path().split('/'));
     this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
       this.currentPage = event['url'].split('/').filter(route => (route));
     })

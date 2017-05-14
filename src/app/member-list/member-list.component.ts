@@ -15,7 +15,7 @@ export class MemberListComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    this.dbService.getUsers().subscribe(users => this.members = users);
+    this.dbService.getMembers().subscribe(members => this.members = members);
   }
 
   goToDetail(member: any) {

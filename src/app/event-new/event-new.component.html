@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col m10 offset-m1">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">New Event</span>
+        <form [formGroup]="newEventForm">
+          <div class="row">
+            <div class="input-field col s5">
+              <input id="name" type="text" class="validate" formControlName="name" required>
+              <label for="name">Event Name</label>
+            </div>
+            <div class="input-field col s5">
+              <input id="location" type="text" class="validate" formControlName="location" required>
+              <label for="location">Event Location</label>
+            </div>
+            <div class="input-field col s2">
+              <input id="date" materialize="pickadate" type="date" class="datepicker" formControlName="date">
+              <label for="date">Event Date</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="description" class="materialize-textarea" formControlName="description" required></textarea>
+              <label for="description">Event Description</label>
+            </div>
+          </div>
+          <div class="row">
+            <button type="button" class="btn waves-effect waves-light" (click)="addEvent()">Add Event
+              <i class="material-icons right">done</i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
