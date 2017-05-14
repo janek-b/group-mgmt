@@ -21,6 +21,7 @@ import { AboutComponent } from './about/about.component';
 import { MemberListComponent } from './member-list/member-list.component';
 import { MemberDetailComponent } from './member-detail/member-detail.component';
 import { MemberEditComponent } from './member-edit/member-edit.component';
+import { BreadcrumbPipe } from './breadcrumb.pipe';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -36,7 +37,8 @@ export const firebaseConfig = {
     AboutComponent,
     MemberListComponent,
     MemberDetailComponent,
-    MemberEditComponent
+    MemberEditComponent,
+    BreadcrumbPipe
   ],
   imports: [
     BrowserModule,

@@ -3,17 +3,20 @@
     <nav>
       <div class="nav-wrapper">
         <a materialize="sideNav"  [materializeParams]="[{closeOnClick: true}]" href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-        <a href="#" class="brand-logo">Group Mgmt</a>
-        <ul class="right hide-on-med-and-down">
-          <li>
-            <div *ngIf="user" class="chip">
-              <img *ngIf="user.photoURL" src="{{user.photoURL}}" alt="profile picture of {{user.displayName || user.email}}">
-              {{user.displayName || user.email}}
-            </div>
-          </li>
-          <li><a *ngIf="!user" class="waves-effect waves-light btn" (click)="openModal()">Login <i class="material-icons right">cloud</i></a></li>
-          <li><a *ngIf="user" class="waves-effect waves-light btn" (click)="logout()">Logout <i class="material-icons right">cloud</i></a></li>
-        </ul>
+        <div class="col s12">
+          <a routerLink="" class="breadcrumb">Group Mgmt</a>
+          <a *ngFor="let page of currentPage; let i = index" routerLink="{{page}}" class="breadcrumb">{{page | breadcrumb:i}}</a>
+          <ul class="right hide-on-med-and-down">
+            <li>
+              <div *ngIf="user" class="chip" routerLink="/members/{{user.uid}}">
+                <img *ngIf="user.photoURL" src="{{user.photoURL}}" alt="profile picture of {{user.displayName || user.email}}">
+                {{user.displayName || user.email}}
+              </div>
+            </li>
+            <li><a *ngIf="!user" class="waves-effect waves-light btn" (click)="openModal()">Login <i class="material-icons right">cloud</i></a></li>
+            <li><a *ngIf="user" class="waves-effect waves-light btn" (click)="logout()">Logout <i class="material-icons right">cloud</i></a></li>
+          </ul>
+        </div>
         <ul id="slide-out" class="side-nav">
           <li class="center-align">
             <a routerLink="">
