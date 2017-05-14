@@ -10,7 +10,7 @@
         <span *ngIf="user?.uid !== member?.$key" class="card-title grey-text text-darken-4">{{member?.displayName || 'No profile name available'}}</span>
         <hr>
         <div class="row">
-          <div class="col s12 m4">
+          <div class="col s12 m5">
             <div class="info-section fg-row grey-text text-darken-2">
               <div class="fc-auto">
                 <p class="text-right">Email</p>
@@ -32,7 +32,7 @@
               </div>
             </div>
           </div>
-          <div class="col s12 m8">
+          <div class="col s12 m7">
             <div class="bio-section grey-text text-darken-2">
               <p *ngIf="user?.uid === member?.$key">{{member?.bio || 'Update your profile to add a bio'}}</p>
               <p *ngIf="user?.uid !== member?.$key">{{member?.bio || 'No bio available'}}</p>

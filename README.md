@@ -102,6 +102,6 @@ This project is a web application that allows members of a club to connect with 
 - [x] Member-list component
 - [x] Member-detail component
 - [x] Member-edit component
-- [ ] Event-list component
-- [ ] Event-detail component
-- [ ] Event-new component
+- [x] Event-list component
+- [x] Event-detail component
+- [x] Event-new component

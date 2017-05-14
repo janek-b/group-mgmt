@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col s12 m3">
+  <div class="col s12 m3 offset-m1">
     <div class="card">
       <div class="card-content">
         <span class="card-title">Filter Members</span>
@@ -11,7 +11,7 @@
       </div>
     </div>
   </div>
-  <div class="col s12 m9">
+  <div class="col s12 m7">
     <div class="fg-row fg-around">
       <h5>Members: {{members?.length}}</h5>
       <h5>stat2</h5>
@@ -22,20 +22,23 @@
     <ul class="collection">
       <li class="collection-item avatar" *ngFor="let member of members">
         <img (click)="goToDetail(member)" src="{{member.photoURL}}" alt="" class="circle">
-        <span class="title">{{member.displayName || member.email}}</span>
-        <div class="fg-row grey-text">
-          <div class="fc-auto">
-            <p class="text-right">Role</p>
-            <p class="text-right">Member Since</p>
+        <div class="fg-row">
+          <span class="title fc-30">{{member.displayName || member.email}}</span>
+          <div class="fc-auto fg-row grey-text">
+            <div class="fc-auto">
+              <p class="text-right">Role</p>
+              <p class="text-right">Member Since</p>
+            </div>
+            <div class="fc-auto spacer">
+              <p> - </p>
+              <p> - </p>
+            </div>
+            <div class="fc-auto">
+              <p>{{member.role | titlecase}}</p>
+              <p>{{member.joined | date}}</p>
+            </div>
           </div>
-          <div class="fc-auto spacer">
-            <p> - </p>
-            <p> - </p>
-          </div>
-          <div class="fc-auto">
-            <p>{{member.role}}</p>
-            <p>{{member.joined | date}}</p>
-          </div>
+
         </div>
       </li>
     </ul>
