@@ -3,7 +3,7 @@
     <ul class="collection">
       <li class="collection-item" *ngFor="let event of events">
         <div class="">
-          <span class="grey-text text-darken-3">{{event.name}}</span>
+          <span class="grey-text text-darken-3" (click)="goToDetail(event)">{{event.name}}</span>
           <span class="secondary-content">{{event.date | date}}</span><br>
           <span class="grey-text text-darken-1">{{event.location}}</span>
         </div>

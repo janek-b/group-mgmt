@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col s12 m10 offset-m1">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{event?.name}}</span>
+        <p>{{event?.location}}</p>
+        <p>{{event?.date}}</p>
+        <p>{{event?.description}}</p>
+        <ul>
+          <li *ngFor="let member of members">
+            {{member.email}}
+          </li>
+        </ul>
+        <button type="button" class="btn waves-effect waves-light" (click)="attend(event?.$key)">RSVP
+          <i class="material-icons right">done</i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

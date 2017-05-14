@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
+import { Event } from '../event';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AuthService } from '../auth.service';
@@ -13,6 +14,7 @@ import { DbService } from '../db.service';
 export class MemberDetailComponent implements OnInit {
   memberId: string;
   member: User;
+  events: Event[];
   user: any = null;
 
   constructor(private route: ActivatedRoute,
@@ -25,6 +27,7 @@ export class MemberDetailComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.memberId = params['memberId'];
       this.dbService.getMember(this.memberId).subscribe(member => this.member = member);
+      this.dbService.getEventsByMember(this.memberId).subscribe(events => this.events = events);
     });
     this.authService.getCurrentUser().subscribe(currentUser => {
       this.user = currentUser;

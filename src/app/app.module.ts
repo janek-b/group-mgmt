@@ -24,6 +24,7 @@ import { MemberEditComponent } from './member-edit/member-edit.component';
 import { BreadcrumbPipe } from './breadcrumb.pipe';
 import { EventNewComponent } from './event-new/event-new.component';
 import { EventListComponent } from './event-list/event-list.component';
+import { EventDetailComponent } from './event-detail/event-detail.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -42,7 +43,8 @@ export const firebaseConfig = {
     MemberEditComponent,
     BreadcrumbPipe,
     EventNewComponent,
-    EventListComponent
+    EventListComponent,
+    EventDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import { MemberListComponent } from './member-list/member-list.component';
 import { MemberDetailComponent } from './member-detail/member-detail.component';
 import { EventNewComponent } from './event-new/event-new.component';
 import { EventListComponent } from './event-list/event-list.component';
+import { EventDetailComponent } from './event-detail/event-detail.component';
 
 const appRoutes: Routes = [
   {
@@ -30,7 +31,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'events/:eventId',
-    component: EventListComponent
+    component: EventDetailComponent
   },
   {
     path: 'events/new',
