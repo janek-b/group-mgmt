@@ -44,7 +44,11 @@ export class EventDetailComponent implements OnInit, OnDestroy {
   }
 
   attend(eventId: string) {
-    this.dbService.addAttendingMember(eventId, this.user.uid).then(result => console.log(result));
+    this.dbService.addAttendingMember(eventId, this.user.uid).then(result => console.log("add toast to confirm rsvp"));
+  }
+
+  unAttend(eventId: string) {
+    this.dbService.removeAttendingMember(eventId, this.user.uid).then(result => console.log("add toast to confirm unrsvp"));
   }
 
 

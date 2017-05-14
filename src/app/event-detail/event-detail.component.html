@@ -12,7 +12,7 @@
           </li>
         </ul>
         <div *ngIf="user && event">
-          <button *ngIf="event | attending:user.uid" type="button" class="btn waves-effect waves-light" (click)="attend(event?.$key)">unRSVP
+          <button *ngIf="event | attending:user.uid" type="button" class="btn waves-effect waves-light" (click)="unAttend(event?.$key)">cancel RSVP
             <i class="material-icons right">done</i>
           </button>
           <button *ngIf="!(event | attending:user.uid)" type="button" class="btn waves-effect waves-light" (click)="attend(event?.$key)">RSVP

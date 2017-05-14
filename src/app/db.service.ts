@@ -57,6 +57,13 @@ export class DbService {
     return firebase.database().ref().update(updates);
   }
 
+  removeAttendingMember(eventId: string, memberId: string) {
+    var updates = {};
+    updates['/events/' + eventId + '/members/' + memberId] = null;
+    updates['/users/' + memberId + '/events/' + eventId] = null;
+    return firebase.database().ref().update(updates);
+  }
+
   getMembersByEvent(eventId: string) {
     return this.db.list('/events/'+eventId+'/members').switchMap((items) => {
       return items.length === 0 ? Observable.of([]) : Observable.combineLatest(...items.map(item => this.getMember(item.$key)))
