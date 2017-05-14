@@ -63,6 +63,10 @@ $link-color: color("light-blue", "darken-1") !default;
   align-self: flex-start;
 }
 
+.fc-30 {
+  flex: 0 1 30%;
+}
+
 
 .spacer {
   width: 40px;

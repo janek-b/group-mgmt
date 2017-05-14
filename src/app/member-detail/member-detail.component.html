@@ -36,10 +36,23 @@
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
           </div>
+        </div>
+        <hr>
+        <div class="row">
           <div class="col s12 m12">
-            <ul>
-              <li *ngFor="let event of events">
-                {{event.name}}
+            <h6>Attending upcoming events</h6>
+            <ul class="collection">
+              <li class="collection-item fg-row fg-between" *ngFor="let event of events">
+                <div class="fc-expand fg-row grey-text text-darken-2">
+                  <a class="fc-30" routerLink="/events/{{event.$key}}">{{event.name | titlecase}}</a>
+                  <span class="fc-30"><small>location:</small> {{event.location | titlecase}}</span>
+                  <span class="fc-30 right-align"><small>date:</small> {{event.date | date}}</span>
+                </div>
+                <div class="fc-auto spacer">
+                </div>
+                <button *ngIf="(user?.uid === member?.$key) && (event | attending:user?.uid)" type="button" class="btn waves-effect waves-light secondary-content" (click)="unAttend(event?.$key)">cancel RSVP
+                  <i class="material-icons right">done</i>
+                </button>
               </li>
             </ul>
           </div>

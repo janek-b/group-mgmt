@@ -8,6 +8,8 @@ import { DbService } from '../db.service';
 import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
 
+declare var Materialize: any;
+
 @Component({
   selector: 'app-member-detail',
   templateUrl: './member-detail.component.html',
@@ -42,6 +44,12 @@ export class MemberDetailComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+  }
+
+  unAttend(eventId: string) {
+    this.dbService.removeAttendingMember(eventId, this.user.uid).then(result => {
+      Materialize.toast('RSVP cancelled', 4000);
+    });
   }
 
 }
