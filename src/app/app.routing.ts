@@ -7,6 +7,7 @@ import { MemberDetailComponent } from './member-detail/member-detail.component';
 import { EventNewComponent } from './event-new/event-new.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
+import { AdminComponent } from './admin/admin.component';
 
 const appRoutes: Routes = [
   {
@@ -16,6 +17,10 @@ const appRoutes: Routes = [
   {
     path: 'about',
     component: AboutComponent
+  },
+  {
+    path: 'admin',
+    component: AdminComponent
   },
   {
     path: 'members',

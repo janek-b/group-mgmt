@@ -83,3 +83,15 @@ $link-color: color("light-blue", "darken-1") !default;
   justify-content: center;
   align-items: center;
 }
+
+
+
+
+.tabs-content.carousel .carousel-item {
+  height: 100%;
+}
+
+.tabs-content.carousel {
+  height: 500px;
+  overflow-y: scroll;
+}

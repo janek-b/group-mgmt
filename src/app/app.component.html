@@ -52,7 +52,10 @@
           <p class="grey-text text-lighten-4">An Enthusiast Club Community Site</p>
         </div>
         <div class="col l4 offset-l2 s12">
-          <p><a class="grey-text text-lighten-4 right" routerLink="about">About</a></p>
+          <div class="fg-row fg-around">
+            <p><a class="grey-text text-lighten-4" routerLink="about">About</a></p>
+            <p *ngIf="user"><a class="grey-text text-lighten-4" routerLink="admin">Admin</a></p>
+          </div>
         </div>
       </div>
     </div>

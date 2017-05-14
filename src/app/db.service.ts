@@ -83,5 +83,12 @@ export class DbService {
     })
   }
 
+  addAdmin(memberId: string) {
+    this.updateMember(memberId, {role: 'admin'});
+  }
+
+  removeAdmin(memberId: string) {
+    this.updateMember(memberId, {role: 'member'});
+  }
 
 }
