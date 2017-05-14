@@ -34,7 +34,7 @@ export class EventNewComponent implements OnInit {
     var newEvent = new Event(name, location, (new Date(date).toJSON()), description, this.user.uid);
     this.dbService.addEvent(newEvent);
     this.newEventForm.reset();
-
+    this.router.navigate(['events']);
   }
 
 }

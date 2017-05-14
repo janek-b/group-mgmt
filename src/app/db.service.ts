@@ -23,12 +23,24 @@ export class DbService {
     return this.db.object('/users/'+memberId);
   }
 
+  getMemberOnce(memberId: string) {
+    return firebase.database().ref('/users/'+memberId).once('value');
+  }
+
   updateMember(memberId: string, updateValues: any) {
     this.users.update(memberId, updateValues);
   }
 
+  getEvents() {
+    return this.events;
+  }
+
   addEvent(newEvent: Event) {
     this.events.push(newEvent);
+  }
+
+  getEventOnce(eventId: string) {
+    return firebase.database().ref('/events/'+eventId).once('value');
   }
 
 }

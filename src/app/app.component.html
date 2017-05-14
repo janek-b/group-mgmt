@@ -5,7 +5,7 @@
         <a materialize="sideNav"  [materializeParams]="[{closeOnClick: true}]" href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
         <div class="col s12">
           <a routerLink="" class="breadcrumb">Group Mgmt</a>
-          <a *ngFor="let page of currentPage; let i = index" routerLink="{{page}}" class="breadcrumb">{{page | breadcrumb:i}}</a>
+          <a *ngFor="let page of currentPage; let i = index" routerLink="{{page}}" class="breadcrumb">{{currentPage | breadcrumb:i | async}}</a>
           <ul class="right hide-on-med-and-down">
             <li>
               <div *ngIf="user" class="chip" routerLink="/members/{{user.uid}}">
@@ -34,6 +34,8 @@
           <li><a class="subheader">Links</a></li>
           <li><a routerLink="about">About</a></li>
           <li><a routerLink="members">Members</a></li>
+          <li><a routerLink="events">Events</a></li>
+          <li><a routerLink="events/new">New Event</a></li>
         </ul>
       </div>
     </nav>
