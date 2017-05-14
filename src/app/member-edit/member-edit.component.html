@@ -19,7 +19,7 @@
     <button type="button" [disabled]="!editForm.valid" class="btn waves-effect waves-light right card-title" (click)="updateMember()">Update Member
       <i class="material-icons right">done</i>
     </button>
-    <button type="button" class="modal-trigger btn waves-effect waves-light left red">Delete Member
+    <button type="button" class="modal-trigger btn waves-effect waves-light left red" (click)="deleteMember()">Delete Member
       <i class="material-icons left">delete</i>
     </button>
   </div>

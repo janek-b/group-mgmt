@@ -34,6 +34,13 @@ export class DbService {
     this.users.update(memberId, updateValues);
   }
 
+  deleteMember(member: any) {
+    if (member.events) {
+      Object.keys(member.events).forEach(event => this.removeAttendingMember(event, member.$key));
+    }
+    this.users.remove(member.$key);
+  }
+
   getEvents() {
     return this.events;
   }

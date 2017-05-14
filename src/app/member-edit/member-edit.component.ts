@@ -15,9 +15,10 @@ import { Subject } from 'rxjs/Subject';
 })
 export class MemberEditComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
-  
+
   @Input() member: any;
   editForm: FormGroup;
+
 
   constructor(private route: ActivatedRoute,
               private location: Location,
@@ -49,6 +50,25 @@ export class MemberEditComponent implements OnInit, OnDestroy {
     this.authService.updateUserProfile(displayName, photoURL).then(() => {
       this.dbService.updateMember(this.member.$key, this.editForm.value);
     });
+  }
+
+  deleteMember() {
+    if (confirm('Are you sure you want to delete your account?')) {
+      this.dbService.deleteMember(this.member);
+
+      // TODO Deleting requires reauth. Need to figure out how to reopen login modal in app component from this component.
+      // For now just sign out user.
+      this.authService.logout().then(result => {
+        this.router.navigate(['']);
+      })
+
+      // this.authService.deleteUser(this.member).then(result => {
+      //   console.log('deleted', result)
+      //   this.router.navigate(['']);
+      // }).catch(error => {
+      //   console.log('error', error)
+      // });
+    }
   }
 
 }

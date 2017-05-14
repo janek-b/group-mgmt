@@ -50,4 +50,10 @@ export class AuthService {
     return this.afAuth.auth.currentUser.updateProfile({displayName: displayName, photoURL: photoURL});
   }
 
+  deleteUser(user: any) {
+    if (this.afAuth.auth.currentUser.uid === user.$key) {
+      return this.afAuth.auth.currentUser.delete();
+    }
+  }
+
 }
