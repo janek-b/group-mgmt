@@ -25,6 +25,7 @@ import { BreadcrumbPipe } from './breadcrumb.pipe';
 import { EventNewComponent } from './event-new/event-new.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
+import { AttendingPipe } from './attending.pipe';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -44,7 +45,8 @@ export const firebaseConfig = {
     BreadcrumbPipe,
     EventNewComponent,
     EventListComponent,
-    EventDetailComponent
+    EventDetailComponent,
+    AttendingPipe
   ],
   imports: [
     BrowserModule,
