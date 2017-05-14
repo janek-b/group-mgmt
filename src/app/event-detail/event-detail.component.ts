@@ -8,6 +8,9 @@ import { User } from '../user';
 import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
 
+declare var Materialize: any;
+
+
 @Component({
   selector: 'app-event-detail',
   templateUrl: './event-detail.component.html',
@@ -44,11 +47,15 @@ export class EventDetailComponent implements OnInit, OnDestroy {
   }
 
   attend(eventId: string) {
-    this.dbService.addAttendingMember(eventId, this.user.uid).then(result => console.log("add toast to confirm rsvp"));
+    this.dbService.addAttendingMember(eventId, this.user.uid).then(result => {
+      Materialize.toast('RSVP confirmed', 4000);
+    });
   }
 
   unAttend(eventId: string) {
-    this.dbService.removeAttendingMember(eventId, this.user.uid).then(result => console.log("add toast to confirm unrsvp"));
+    this.dbService.removeAttendingMember(eventId, this.user.uid).then(result => {
+      Materialize.toast('RSVP cancelled', 4000);
+    });
   }
 
 

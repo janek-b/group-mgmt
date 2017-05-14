@@ -9,7 +9,7 @@
           <ul class="right hide-on-med-and-down">
             <li>
               <div *ngIf="user" class="chip" routerLink="/members/{{user.uid}}">
-                <img *ngIf="user.photoURL" src="{{user.photoURL}}" alt="profile picture of {{user.displayName || user.email}}">
+                <img src="{{user?.photoURL || 'assets/images/profile-default.jpg'}}" alt="profile picture of {{user.displayName || user.email}}">
                 {{user.displayName || user.email}}
               </div>
             </li>
@@ -25,7 +25,7 @@
           </li>
           <li *ngIf="user">
             <div class="userView">
-              <a routerLink="/members/{{user.uid}}"><img class="circle" src="{{user.photoURL}}"></a>
+              <a routerLink="/members/{{user.uid}}"><img class="circle" src="{{user?.photoURL || 'assets/images/profile-default.jpg'}}"></a>
               <a routerLink="/members/{{user.uid}}"><span class="black-text name">{{user.displayName}}</span></a>
               <a routerLink="/members/{{user.uid}}"><span class="black-text email">{{user.email}}</span></a>
             </div>
