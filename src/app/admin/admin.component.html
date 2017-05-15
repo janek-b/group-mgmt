@@ -71,3 +71,39 @@
     </div>
   </div>
 </div>
+
+
+<div id="eventEditModal" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="eventEditModal">
+  <div class="modal-content">
+    <h4>Edit Event</h4>
+    <app-event-edit *ngIf="eventToEdit" [event]="eventToEdit" [user]="signedInMember" (closeSender)="closeEditForm()"></app-event-edit>
+    <!-- <form [formGroup]="editEventForm">
+      <div class="row">
+        <div class="input-field col s5">
+          <input id="name" type="text" class="validate" formControlName="name" required>
+          <label for="name">Event Name</label>
+        </div>
+        <div class="input-field col s5">
+          <input id="location" type="text" class="validate" formControlName="location" required>
+          <label for="location">Event Location</label>
+        </div>
+        <div class="input-field col s2">
+          <input id="date" materialize="pickadate" type="date" class="datepicker" formControlName="date">
+          <label for="date">Event Date</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="description" class="materialize-textarea" formControlName="description" required></textarea>
+          <label for="description">Event Description</label>
+        </div>
+      </div>
+    </form> -->
+  </div>
+  <!-- <div class="modal-footer">
+    <div class="fg-row fg-between">
+      <button class="modal-action modal-close waves-effect waves-lift btn-flat">Cancel</button>
+      <button class="modal-action modal-close waves-effect waves-lift btn" [disabled]="!editEventForm.valid" (click)="updateEvent()">Save Changes</button>
+    </div>
+  </div> -->
+</div>

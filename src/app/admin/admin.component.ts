@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { DbService } from '../db.service';
@@ -7,6 +7,7 @@ import { Event } from '../event';
 import { User } from '../user';
 import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
+import { MaterializeAction } from 'angular2-materialize';
 
 @Component({
   selector: 'app-admin',
@@ -22,6 +23,9 @@ export class AdminComponent implements OnInit, OnDestroy {
   signedInMember: User;
 
   eventFilter: string = 'all';
+  eventToEdit: Event = null;
+
+  eventEditModal = new EventEmitter<string|MaterializeAction>();
 
   constructor(private route: ActivatedRoute,
               private location: Location,
@@ -69,13 +73,26 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   editEvent(event: Event) {
-
+    this.eventToEdit = event;
+    this.openModal();
   }
 
   deleteEvent(event: Event) {
     if (confirm("Are you sure you want to delete this event?")) {
       this.dbService.deleteEvent(event);
     }
+  }
+
+  closeEditForm() {
+    this.eventToEdit = null;
+    this.closeModal();
+  }
+
+  openModal() {
+    this.eventEditModal.emit({action:"modal",params:['open']});
+  }
+  closeModal() {
+    this.eventEditModal.emit({action:"modal",params:['close']});
   }
 
 }
