@@ -27,7 +27,7 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   eventEditModal = new EventEmitter<string|MaterializeAction>();
 
-  constructor(private route: ActivatedRoute,
+  constructor(private router: Router,
               private location: Location,
               private dbService: DbService,
               private authService: AuthService) { }
@@ -40,8 +40,12 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.authService.getCurrentUser()
       .takeUntil(this.ngUnsubscribe).subscribe(currentUser => {
         this.user = currentUser;
-        this.dbService.getMember(this.user.uid)
+        if (this.user) {
+          this.dbService.getMember(this.user.uid)
           .takeUntil(this.ngUnsubscribe).subscribe(member => this.signedInMember = member);
+        } else {
+          this.router.navigate(['']);
+        }
       });
   }
 

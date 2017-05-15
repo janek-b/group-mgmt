@@ -1,11 +1,9 @@
-import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import { DbService } from '../db.service';
 import { AuthService } from '../auth.service';
 import { Event } from '../event';
 import { User } from '../user';
-import 'rxjs/add/operator/takeUntil';
-import { Subject } from 'rxjs/Subject';
 import * as moment from 'moment';
 
 @Component({
@@ -13,8 +11,7 @@ import * as moment from 'moment';
   templateUrl: './event-edit.component.html',
   styleUrls: ['./event-edit.component.scss']
 })
-export class EventEditComponent implements OnInit, OnDestroy {
-  private ngUnsubscribe: Subject<void> = new Subject<void>();
+export class EventEditComponent implements OnInit {
   @Input() event: any;
   @Input() user: any;
   @Output() closeSender = new EventEmitter();
@@ -31,11 +28,6 @@ export class EventEditComponent implements OnInit, OnDestroy {
       date: [moment(this.event.date).format('DD MMMM, YYYY'), Validators.required],
       description: [this.event.description, Validators.required]
     })
-  }
-
-  ngOnDestroy() {
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
   }
 
   closeEditForm() {
