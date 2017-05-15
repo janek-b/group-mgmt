@@ -4,7 +4,7 @@
       <div class="nav-wrapper">
         <a materialize="sideNav"  [materializeParams]="[{closeOnClick: true}]" href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
         <div class="col s12">
-          <a routerLink="" class="breadcrumb">Group Mgmt</a>
+          <a routerLink="" class="breadcrumb">Home</a>
           <a *ngFor="let page of currentPage; let i = index" routerLink="{{page}}" class="breadcrumb">{{currentPage | breadcrumb:i | async | titlecase}}</a>
           <ul class="right hide-on-med-and-down">
             <li>
@@ -18,20 +18,17 @@
           </ul>
         </div>
         <ul id="slide-out" class="side-nav">
-          <li class="center-align">
-            <a routerLink="">
-              <h5>Group Mgmt</h5>
-            </a>
-          </li>
           <li *ngIf="user">
             <div class="userView">
+              <div class="background">
+                <img src="http://blog.theclymb.com/wp-content/uploads/2016/05/red-river-gorge-1.jpg" alt="">
+              </div>
               <a routerLink="/members/{{user.uid}}"><img class="circle" src="{{user?.photoURL || 'assets/images/profile-default.jpg'}}"></a>
-              <a routerLink="/members/{{user.uid}}"><span class="black-text name">{{user.displayName}}</span></a>
-              <a routerLink="/members/{{user.uid}}"><span class="black-text email">{{user.email}}</span></a>
+              <a routerLink="/members/{{user.uid}}"><span class="name">{{user.displayName}}</span></a>
+              <a routerLink="/members/{{user.uid}}"><span class="email">{{user.email}}</span></a>
             </div>
           </li>
-          <li><div class="divider"></div></li>
-          <li><a class="subheader">Links</a></li>
+          <li><a routerLink="">Home</a></li>
           <li><a routerLink="about">About</a></li>
           <li><a routerLink="members">Members</a></li>
           <li><a routerLink="events">Events</a></li>
@@ -49,7 +46,7 @@
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <p class="grey-text text-lighten-4">An Enthusiast Club Community Site</p>
+          <p class="grey-text text-lighten-4">An Community Site for Red River Gorge Climbers</p>
         </div>
         <div class="col l4 offset-l2 s12">
           <div class="fg-row fg-around">

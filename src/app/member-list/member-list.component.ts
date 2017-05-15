@@ -14,6 +14,7 @@ export class MemberListComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
 
   members: User[];
+  memberFilter: string = 'all';
 
   constructor(private dbService: DbService,
               private router: Router) { }

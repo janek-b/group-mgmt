@@ -4,8 +4,16 @@
   flex-direction: column;
 }
 
+.background img {
+  width: 100%;
+}
+
 main {
+  padding-top: 25px;
   flex: 1 0 auto;
+  background-image: url('http://rvproj.files.wordpress.com/2012/06/img_0453.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #loginModal {

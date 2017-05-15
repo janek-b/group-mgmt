@@ -96,9 +96,9 @@ This project is a web application that allows members of a club to connect with 
 - [x] Create router and add navbar to app component
 - [x] Add Welcome page
 - [x] Add About page
-- [ ] Define user roles
+- [x] Define user roles
 - [x] Implement user creation on first sign in
-- [ ] Implement user creation by admin
+- [x] Implement user deletion by admin
 - [x] Member-list component
 - [x] Member-detail component
 - [x] Member-edit component

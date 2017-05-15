@@ -13,7 +13,6 @@
           </select>
           <label>Filter events</label>
         </div>
-        <hr>
         <ul *ngIf="events" class="collection">
           <li class="collection-item" *ngFor="let event of events | eventDate:eventFilter">
             <div class="">

@@ -25,7 +25,6 @@ export class BreadcrumbPipe implements PipeTransform {
         return this.dbService.getEventOnce(crumb[index]).then(value => {
           resolve(value.val().name);
         })
-        // resolve('eventID');
       } else {
         resolve(crumb[index]);
       }

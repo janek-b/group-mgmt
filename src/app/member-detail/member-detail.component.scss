@@ -1,5 +1,4 @@
 .detail-card {
-  margin-top: 25px;
   min-height: 400px;
 }
 
@@ -12,8 +11,15 @@
 
 .card-image {
   padding: 24px;
+  img {
+    max-width: 170px;
+  }
 }
 
 i.activator {
   cursor: pointer;
+}
+
+.card-content {
+  width: 100%;
 }

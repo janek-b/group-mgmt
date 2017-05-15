@@ -29,6 +29,7 @@ import { AttendingPipe } from './attending.pipe';
 import { EventDatePipe } from './event-date.pipe';
 import { AdminComponent } from './admin/admin.component';
 import { EventEditComponent } from './event-edit/event-edit.component';
+import { MemberRolePipe } from './member-role.pipe';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -52,7 +53,8 @@ export const firebaseConfig = {
     AttendingPipe,
     EventDatePipe,
     AdminComponent,
-    EventEditComponent
+    EventEditComponent,
+    MemberRolePipe
   ],
   imports: [
     BrowserModule,
