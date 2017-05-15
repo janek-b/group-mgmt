@@ -1,12 +1,12 @@
 # _Group Mgmt_
 
-#### _An enthusiast club management system, 05-12-2017_
+#### _A rock climbing community management system, 05-12-2017_
 
 ####  By _**Janek Brandt**_
 
 ## Description
 
-This project is a web application that allows members of a club to connect with each other and share information about upcoming events.
+This project is a web application that allows members of a community to connect with each other and share information about upcoming events.
 
 
 ## Planning
