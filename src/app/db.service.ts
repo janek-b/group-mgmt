@@ -57,6 +57,13 @@ export class DbService {
     return firebase.database().ref('/events/'+eventId).once('value');
   }
 
+  deleteEvent(event: any) {
+    if (event.members) {
+      Object.keys(event.members).forEach(member => this.removeAttendingMember(event.$key, member));
+    }
+    this.events.remove(event.$key);
+  }
+
   addAttendingMember(eventId: string, memberId: string) {
     var updates = {};
     updates['/events/' + eventId + '/members/' + memberId] = true;

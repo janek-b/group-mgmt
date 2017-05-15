@@ -17,8 +17,11 @@ export class AdminComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
 
   members: User[];
+  events: Event[];
   user: any = null;
   signedInMember: User;
+
+  eventFilter: string = 'all';
 
   constructor(private route: ActivatedRoute,
               private location: Location,
@@ -28,6 +31,8 @@ export class AdminComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.dbService.getMembers()
       .takeUntil(this.ngUnsubscribe).subscribe(members => this.members = members);
+    this.dbService.getEvents()
+      .takeUntil(this.ngUnsubscribe).subscribe(events => this.events = events);
     this.authService.getCurrentUser()
       .takeUntil(this.ngUnsubscribe).subscribe(currentUser => {
         this.user = currentUser;
@@ -54,6 +59,22 @@ export class AdminComponent implements OnInit, OnDestroy {
       this.addAdmin(memberId)
     } else {
       this.removeAdmin(memberId);
+    }
+  }
+
+  deleteMember(member: User) {
+    if (confirm("Are you sure you want to delete this member's account?")) {
+      this.dbService.deleteMember(member);
+    }
+  }
+
+  editEvent(event: Event) {
+
+  }
+
+  deleteEvent(event: Event) {
+    if (confirm("Are you sure you want to delete this event?")) {
+      this.dbService.deleteEvent(event);
     }
   }
 
