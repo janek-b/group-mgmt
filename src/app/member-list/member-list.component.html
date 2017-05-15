@@ -9,16 +9,18 @@
             <option value="admin">Admins</option>
             <option value="nonAdmin">Non Admins</option>
           </select>
-          <div *ngIf="members" class="fg-row fg-between">
-            <div class="fc-auto">
+          <div *ngIf="members">
+            <div class="fg-row fg-between">
               <h6>Members:</h6>
-              <h6>Admins:</h6>
-              <h6>Non Admins:</h6>
+              <span class="new badge" data-badge-caption="">{{members?.length}}</span>
             </div>
-            <div class="fc-auto">
-              <h6>{{members?.length}}</h6>
-              <h6>{{(members | memberRole:'admin').length}}</h6>
-              <h6>{{(members | memberRole:'nonAdmin').length}}</h6>
+            <div class="fg-row fg-between">
+              <h6>Admins:</h6>
+              <span class="new badge" data-badge-caption="">{{(members | memberRole:'admin').length}}</span>
+            </div>
+            <div class="fg-row fg-between">
+              <h6>Non Admins:</h6>
+              <span class="new badge" data-badge-caption="">{{(members | memberRole:'nonAdmin').length}}</span>
             </div>
           </div>
         </div>
