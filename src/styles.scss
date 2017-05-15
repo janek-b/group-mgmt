@@ -32,6 +32,11 @@ $link-color: color("light-blue", "darken-1") !default;
   flex-direction: row;
 }
 
+.fg-inline-row {
+  display: inline-flex;
+  flex-direction: row;
+}
+
 .fg-center-center {
   justify-content: center;
   align-content: center;

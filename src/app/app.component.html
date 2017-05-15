@@ -13,8 +13,8 @@
                 {{user.displayName || user.email}}
               </div>
             </li>
-            <li><a *ngIf="!user" class="waves-effect waves-light btn" (click)="openModal()">Login <i class="material-icons right">cloud</i></a></li>
-            <li><a *ngIf="user" class="waves-effect waves-light btn" (click)="logout()">Logout <i class="material-icons right">cloud</i></a></li>
+            <li><a *ngIf="!user" class="waves-effect waves-light btn fg-inline-row fg-center-center" (click)="openModal()"><span>Login</span><i class="fa fa-lg fa-sign-in right" aria-hidden="true"></i></a></li>
+            <li><a *ngIf="user" class="waves-effect waves-light btn fg-inline-row fg-center-center" (click)="logout()"><span>Logout</span><i class="fa fa-lg fa-sign-out right" aria-hidden="true"></i></a></li>
           </ul>
         </div>
         <ul id="slide-out" class="side-nav">
@@ -46,7 +46,7 @@
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <p class="grey-text text-lighten-4">An Community Site for Red River Gorge Climbers</p>
+          <p class="grey-text text-lighten-4">A Community Site for Red River Gorge Climbers</p>
         </div>
         <div class="col l4 offset-l2 s12">
           <div class="fg-row fg-around">
