@@ -1,32 +1,26 @@
-<!-- <form [formGroup]="editEventForm"> -->
-  <div class="row">
-    <div class="input-field col s5">
-      <input materialize id="name" type="text" [ngModel]='(db.getEvent(event.$key) | async)?.name' (ngModelChange)='db.getEvent(event.$key).update({name: $event})'>
-      <!-- <input id="name" type="text" class="validate" formControlName="name" required> -->
-      <label for="name" class="active">Event Name</label>
-    </div>
-    <div class="input-field col s5">
-      <input materialize id="location" type="text" [ngModel]='(db.getEvent(event.$key) | async)?.location' (ngModelChange)='db.getEvent(event.$key).update({location: $event})'>
-      <!-- <input id="location" type="text" class="validate" formControlName="location" required> -->
-      <label for="location" class="active">Event Location</label>
-    </div>
-    <div class="input-field col s2">
-      <input id="date" materialize="pickadate" type="date" class="datepicker" [ngModel]='(db.getEvent(event.$key) | async)?.date' (ngModelChange)='db.getEvent(event.$key).update({date: $event})'>
-      <!-- <input id="date" materialize="pickadate" type="date" class="datepicker" formControlName="date" [value]="date"> -->
-      <label for="date" class="active">Event Date</label>
-    </div>
+<div class="row">
+  <div class="input-field col s5">
+    <input materialize id="name" type="text" [ngModel]='(db.getEvent(event.$key) | async)?.name' (ngModelChange)='db.getEvent(event.$key).update({name: $event})'>
+    <label for="name" class="active">Event Name</label>
   </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <textarea materialize id="description" class="materialize-textarea" [ngModel]='(db.getEvent(event.$key) | async)?.description' (ngModelChange)='db.getEvent(event.$key).update({description: $event})'></textarea>
-      <!-- <textarea id="description" class="materialize-textarea" formControlName="description" required></textarea> -->
-      <label for="description" class="active">Event Description</label>
-    </div>
+  <div class="input-field col s5">
+    <input materialize id="location" type="text" [ngModel]='(db.getEvent(event.$key) | async)?.location' (ngModelChange)='db.getEvent(event.$key).update({location: $event})'>
+    <label for="location" class="active">Event Location</label>
   </div>
-  <div class="row">
-    <div class="fg-row fg-between">
-      <button type="button" class="waves-effect waves-lift btn-flat" (click)="closeEditForm()">Cancel</button>
-      <button type="button" class="waves-effect waves-lift btn" (click)="updateEvent()">Save Changes</button>
-    </div>
+  <div class="input-field col s2">
+    <input id="date" materialize="pickadate" type="date" class="datepicker" [ngModel]='(db.getEvent(event.$key) | async)?.date' (ngModelChange)='db.getEvent(event.$key).update({date: $event})'>
+    <label for="date" class="active">Event Date</label>
   </div>
-<!-- </form> -->
+</div>
+<div class="row">
+  <div class="input-field col s12">
+    <textarea materialize id="description" class="materialize-textarea" [ngModel]='(db.getEvent(event.$key) | async)?.description' (ngModelChange)='db.getEvent(event.$key).update({description: $event})'></textarea>
+    <label for="description" class="active">Event Description</label>
+  </div>
+</div>
+<div class="row">
+  <div class="fg-row fg-between">
+    <button type="button" class="waves-effect waves-lift btn-flat" (click)="closeEditForm()">Cancel</button>
+    <button type="button" class="waves-effect waves-lift btn" (click)="closeEditForm()">Save Changes</button>
+  </div>
+</div>

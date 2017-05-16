@@ -75,6 +75,6 @@
 <div id="eventEditModal" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="eventEditModal">
   <div class="modal-content">
     <h4>Edit Event</h4>
-    <app-event-edit *ngIf="eventToEdit" [event]="eventToEdit" [user]="signedInMember" (closeSender)="closeEditForm()"></app-event-edit>
+    <app-event-edit *ngIf="eventToEdit" [event]="eventToEdit" (closeSender)="closeEditForm()"></app-event-edit>
   </div>
 </div>
