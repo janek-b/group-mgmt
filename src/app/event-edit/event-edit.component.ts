@@ -17,17 +17,17 @@ export class EventEditComponent implements OnInit {
   @Output() closeSender = new EventEmitter();
   editEventForm: FormGroup;
 
-  constructor(private dbService: DbService,
+  constructor(private db: DbService,
               private authService: AuthService,
               private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.editEventForm = this.fb.group({
-      name: [this.event.name, Validators.required],
-      location: [this.event.location, Validators.required],
-      date: [moment(this.event.date).format('DD MMMM, YYYY'), Validators.required],
-      description: [this.event.description, Validators.required]
-    })
+    // this.editEventForm = this.fb.group({
+    //   name: [this.event.name, Validators.required],
+    //   location: [this.event.location, Validators.required],
+    //   date: [moment(this.event.date).format('DD MMMM, YYYY'), Validators.required],
+    //   description: [this.event.description, Validators.required]
+    // })
   }
 
   closeEditForm() {
@@ -35,9 +35,9 @@ export class EventEditComponent implements OnInit {
   }
 
   updateEvent() {
-    var {name, location, date, description} = this.editEventForm.value;
-    var updateValues = {name: name, location: location, date: (new Date(date).toJSON()), description: description}
-    this.dbService.updateEvent(this.event.$key, updateValues);
+    // var {name, location, date, description} = this.editEventForm.value;
+    // var updateValues = {name: name, location: location, date: (new Date(date).toJSON()), description: description}
+    // this.dbService.updateEvent(this.event.$key, updateValues);
     this.closeSender.emit();
   }
 
